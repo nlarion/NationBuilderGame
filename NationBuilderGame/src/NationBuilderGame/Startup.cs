@@ -6,6 +6,9 @@ using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Data.Entity;
+using NationBuilderGame.Models;
 
 namespace NationBuilderGame
 {
@@ -23,7 +26,7 @@ namespace NationBuilderGame
             services.AddMvc();
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<NationBuilderGameContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+                .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
         }
 
 

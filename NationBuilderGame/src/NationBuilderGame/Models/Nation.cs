@@ -16,7 +16,7 @@ namespace NationBuilderGame.Models
         public int Capital { get; set; }
         public int Population { get; set; }
         public float Stability { get; set; }
-        public virtual Resource Resources { get; set; }
+        public virtual Resource Resource { get; set; }
         public virtual Government Goverment { get; set; }
         public virtual Economy Economy { get; set; }
         public virtual Geography Geography { get; set; }

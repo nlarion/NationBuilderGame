@@ -11,30 +11,33 @@ namespace NationBuilderGame.Models
     public class Nation
     {
         [Key]
+        public int NationId { get; set; }
         public string Name { get; set; }
         public int Capital { get; set; }
-        public int Iron { get; set; }
-        public int Timber { get; set; }
-        public int Oil { get; set; }
         public int Population { get; set; }
-        public float stability { get; set; }
-    }
+        public float Stability { get; set; }
+        public virtual Resource Resources { get; set; }
+        public virtual Government Goverment { get; set; }
+        public virtual Economy Economy { get; set; }
+        public virtual Geography Geography { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
-    public override bool Equals(System.Object otherItem)
-    {
-        if (!(otherItem is Item))
+        public override bool Equals(System.Object otherNation)
         {
-            return false;
+            if (!(otherNation is Nation))
+            {
+                return false;
+            }
+            else
+            {
+                Nation newNation = (Nation)otherNation;
+                return this.NationId.Equals(newNation.NationId);
+            }
         }
-        else
-        {
-            Item newItem = (Item)otherItem;
-            return this.ItemId.Equals(newItem.ItemId);
-        }
-    }
 
-    public override int GetHashCode()
-    {
-        return this.ItemId.GetHashCode();
+        public override int GetHashCode()
+        {
+            return this.NationId.GetHashCode();
+        }
     }
 }
